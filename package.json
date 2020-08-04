@@ -1,0 +1,12 @@
+{
+  "name": "screenshot-url-new-layer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Mattèo Gauthier",
+  "license": "MIT",
+  "dependencies": {
+    "chrome-aws-lambda": "^5.2.0",
+    "jimp": "^0.14.0",
+    "puppeteer-core": "^5.2.1"
+  }
+}
