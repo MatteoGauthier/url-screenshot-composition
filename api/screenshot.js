@@ -24,13 +24,12 @@ module.exports = async function (req, res) {
 
     const screenshot = await getScreenshot({ url, quality })
 
+
+    res.setHeader("Content-Type", `image/png`)
+
     if (!query.newLayer) {
-      console.info("No newLayer param")
-      res.status(202).json({
-        message: `Complete screenshot for ${query.url}. No composition because you didn't provide the newLayer param`,
-        screenshot: screenshot,
-        code: 202,
-      })
+      console.info(`Complete screenshot for ${query.url}. No composition because you didn't provide the newLayer param`)
+      res.status(202).end(screenshot)
     }
 
     const composition = await addNewLayer({
@@ -40,12 +39,8 @@ module.exports = async function (req, res) {
       y: query.y,
     })
 
-    res.status(200).json({
-      message: `Complete screenshot for ${query.url}. Added new layer to the screenshot`,
-      screenshot: screenshot,
-      composition: composition,
-      code: 200,
-    })
+    res.status(200).end(composition)
+
   } catch (error) {
     console.log(error)
     res.status(500).send(error)
