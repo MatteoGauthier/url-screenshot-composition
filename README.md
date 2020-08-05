@@ -33,6 +33,10 @@ https://url-screenshot-composition.now.sh/api/screenshot-and-edit?newLayer=https
 | `quality`  | Choose quality of the output                |          | `quality=75`     |
 | `json`     | JSON response instead of image (Buffer)     |          | `json`           |
 
+---
+
+Feature like width and height or position will be added soon.
+
 | Not implemented yet (Planned) | Description                  |
 | ----------------------------- | ---------------------------- |
 | _width_                       | _width of the screenshot_    |
