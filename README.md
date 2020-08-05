@@ -43,3 +43,7 @@ Feature like width and height or position will be added soon.
 | _height_                      | _height of the screenshot_   |
 | _x_                           | _position x of the newLayer_ |
 | _y_                           | _position y of the newLayer_ |
+
+## TODO's
+
+- [ ] Add waitUntil param for the screenshot
