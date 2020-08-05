@@ -9,6 +9,8 @@ module.exports = async function (req, res) {
     console.log("Start ------ ")
     console.log(process.env.NOW_REGION === "dev1")
 
+    res.setHeader("Access-Control-Allow-Origin", "*")
+
     if (Object.entries(query).length === 0) {
       res.status(400).json({ error: "You must provide some params", code: 400 })
     }
@@ -20,6 +22,8 @@ module.exports = async function (req, res) {
     const url = getUrlFromPath(query.url)
     const screenshot = await getScreenshot(url)
 
+
+    
     if (!query.newLayer) {
       console.info("No newLayer param");
       res.status(202).json({
