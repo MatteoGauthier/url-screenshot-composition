@@ -19,7 +19,7 @@ async function getOptions() {
   }
 }
 
-async function getScreenshot({ url, type = "jpeg", quality = 60 }) {
+async function getScreenshot({ url, type = "jpeg", quality = 100 }) {
   console.info("getScreenshot options", { url, type, quality })
 
   const browser = await puppeteer.launch(await getOptions())

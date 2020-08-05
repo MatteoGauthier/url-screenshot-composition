@@ -1,7 +1,7 @@
 var Jimp = require("jimp")
 
-async function addNewLayer({ backgroundBinary, type = "image/jpeg", inputLayer, x = 0, y = 0, quality }) {
-  console.info("addNewLayer options", { backgroundBinary, type, inputLayer, x, y })
+async function addNewLayer({ backgroundBinary, type = "image/jpeg", inputLayer, x = 0, y = 0, quality = 100 }) {
+  // console.info("addNewLayer options", { backgroundBinary, type, inputLayer, x, y })
 
   const background = await Jimp.read(backgroundBinary)
 

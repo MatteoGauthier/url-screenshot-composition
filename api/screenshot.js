@@ -1,15 +1,9 @@
-const { parse } = require("url")
-const { getUrlFromPath, getInt } = require("./_lib/utils")
-const { addNewLayer } = require("./_lib/jimp")
-const { getScreenshot } = require("./_lib/chromium.js")
+const { getUrlFromPath, getInt, parseUrl } = require("./_lib/utils")
+const { getScreenshot } = require("./_lib/index")
 
 module.exports = async function (req, res) {
   try {
-    const { pathname = "/", query = {} } = parse(req.url, true)
-    console.log("Start ------ ")
-    console.log(process.env.NOW_REGION === "dev1")
-
-    res.setHeader("Access-Control-Allow-Origin", "*")
+    const { pathname = "/", query = {} } = parseUrl(req.url, true)
 
     if (Object.entries(query).length === 0) {
       res.status(400).json({ error: "You must provide some params", code: 400 })
@@ -24,22 +18,22 @@ module.exports = async function (req, res) {
 
     const screenshot = await getScreenshot({ url, quality })
 
-    res.setHeader("Content-Type", `image/jpeg`)
+    res.setHeader("Access-Control-Allow-Origin", "*")
 
-    if (!query.newLayer) {
-      console.info(`Complete screenshot for ${query.url}. No composition because you didn't provide the newLayer param`)
-      res.status(202).end(screenshot)
+    switch (query.json) {
+      case "":
+        res.status(200).json({
+          message: `Complete screenshot of ${query.url}`,
+          screenshot: screenshot,
+          code: 200,
+        })
+        break
+
+      default:
+        res.setHeader("Content-Type", `image/jpeg`)
+        res.status(200).end(screenshot)
+        break
     }
-
-    const composition = await addNewLayer({
-      backgroundBinary: screenshot,
-      inputLayer: query.newLayer,
-      x: query.x,
-      y: query.y,
-      quality,
-    })
-
-    res.status(200).end(composition)
   } catch (error) {
     console.log(error)
     res.status(500).send(error)

@@ -1,3 +1,5 @@
+const { parse: parseUrl } = require("url")
+
 function getUrlFromPath(url) {
   if (!url.startsWith("http")) {
     return "http://" + url
@@ -20,4 +22,4 @@ function isValidUrl(str) {
 }
 
 
-module.exports = { isValidUrl, getUrlFromPath, getInt }
+module.exports = { isValidUrl, getUrlFromPath, getInt, parseUrl }
