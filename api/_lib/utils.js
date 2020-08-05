@@ -1,3 +1,10 @@
+function getUrlFromPath(url) {
+  if (!url.startsWith("http")) {
+    return "http://" + url
+  }
+  return url
+}
+
 function isValidUrl(str) {
   try {
     const url = new URL(str)
@@ -8,4 +15,5 @@ function isValidUrl(str) {
   }
 }
 
-module.exports = { isValidUrl }
+
+module.exports = { isValidUrl, getUrlFromPath }
