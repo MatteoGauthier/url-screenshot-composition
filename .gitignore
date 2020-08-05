@@ -88,3 +88,6 @@ typings/
 .dynamodb/
 
 .vercel
+
+data.js
+testing.js

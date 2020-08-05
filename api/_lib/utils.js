@@ -5,6 +5,10 @@ function getUrlFromPath(url) {
   return url
 }
 
+function getInt(str) {
+  return /[0-9]+/.test(str) ? parseInt(str) : undefined
+}
+
 function isValidUrl(str) {
   try {
     const url = new URL(str)
@@ -16,4 +20,4 @@ function isValidUrl(str) {
 }
 
 
-module.exports = { isValidUrl, getUrlFromPath }
+module.exports = { isValidUrl, getUrlFromPath, getInt }

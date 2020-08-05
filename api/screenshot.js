@@ -1,5 +1,5 @@
 const { parse } = require("url")
-const { getUrlFromPath } = require("./_lib/utils")
+const { getUrlFromPath, getInt } = require("./_lib/utils")
 const { addNewLayer } = require("./_lib/jimp")
 const { getScreenshot } = require("./_lib/chromium.js")
 
@@ -20,12 +20,12 @@ module.exports = async function (req, res) {
     }
 
     const url = getUrlFromPath(query.url)
-    const screenshot = await getScreenshot(url)
+    const quality = getInt(query.quality)
 
+    const screenshot = await getScreenshot({ url, quality })
 
-    
     if (!query.newLayer) {
-      console.info("No newLayer param");
+      console.info("No newLayer param")
       res.status(202).json({
         message: `Complete screenshot for ${query.url}. No composition because you didn't provide the newLayer param`,
         screenshot: screenshot,
@@ -47,7 +47,7 @@ module.exports = async function (req, res) {
       code: 200,
     })
   } catch (error) {
-    console.log(error);
+    console.log(error)
     res.status(500).send(error)
   }
 }
