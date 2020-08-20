@@ -3,7 +3,7 @@ const { addNewLayer, getScreenshot } = require("./_lib/index")
 
 module.exports = async function (req, res) {
   const { pathname = "/", query = {} } = parseUrl(req.url, true)
-
+  res.setHeader("Access-Control-Allow-Origin", "*")
   if (Object.entries(query).length === 0) {
     res.status(400).json({ error: "You must provide some params", code: 400 })
   }
@@ -11,6 +11,7 @@ module.exports = async function (req, res) {
   if (!query.url) {
     res.status(400).json({ error: "You must provide an url param", code: 400 })
   }
+  
 
   const url = getUrlFromPath(query.url)
   const quality = getInt(query.quality)
