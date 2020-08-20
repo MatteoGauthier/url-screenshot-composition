@@ -4,6 +4,7 @@ const { getScreenshot } = require("./_lib/index")
 module.exports = async function (req, res) {
   try {
     const { pathname = "/", query = {} } = parseUrl(req.url, true)
+    console.log(query);
 
     if (Object.entries(query).length === 0) {
       res.status(400).json({ error: "You must provide some params", code: 400 })
@@ -15,8 +16,9 @@ module.exports = async function (req, res) {
 
     const url = getUrlFromPath(query.url)
     const quality = getInt(query.quality)
+    const fullPage = query.fullPage !== undefined ? true : false
 
-    const screenshot = await getScreenshot({ url, quality })
+    const screenshot = await getScreenshot({ url, quality, fullPage })
 
     res.setHeader("Access-Control-Allow-Origin", "*")
 

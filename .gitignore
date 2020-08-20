@@ -91,3 +91,8 @@ typings/
 
 data.js
 testing.js
+
+
+/.vscode
+/.vscode/*
+.vscode/
