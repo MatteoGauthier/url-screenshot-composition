@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Mattèo Gauthier",
+  "description": "Serverless function : puppeteer screenshot and composition with a new layer",
   "license": "MIT",
   "dependencies": {
     "chrome-aws-lambda": "^5.2.0",
