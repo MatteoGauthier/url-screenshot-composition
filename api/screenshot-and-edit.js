@@ -12,7 +12,7 @@ module.exports = async function (req, res) {
     res.status(400).json({ error: "You must provide an url param", code: 400 })
   }
   
-
+  // console.log('query',query);
   const url = getUrlFromPath(query.url)
   const quality = getInt(query.quality)
   const screenshot = await getScreenshot({ url, quality })

@@ -2,16 +2,18 @@ const { getUrlFromPath, getInt, parseUrl } = require("./_lib/utils")
 const { getScreenshot } = require("./_lib/index")
 
 module.exports = async function (req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "*")
   try {
     const { pathname = "/", query = {} } = parseUrl(req.url, true)
-    console.log(query);
 
     if (Object.entries(query).length === 0) {
       res.status(400).json({ error: "You must provide some params", code: 400 })
+      return
     }
 
-    if (!query.url) {
-      res.status(400).json({ error: "You must provide an url param", code: 400 })
+    if (!query.url || Array.isArray(query.url)) {
+      res.status(400).json({ error: "You must provide one url param", code: 400 })
+      return
     }
 
     const url = getUrlFromPath(query.url)
@@ -19,8 +21,6 @@ module.exports = async function (req, res) {
     const fullPage = query.fullPage !== undefined ? true : false
 
     const screenshot = await getScreenshot({ url, quality, fullPage })
-
-    res.setHeader("Access-Control-Allow-Origin", "*")
 
     switch (query.json) {
       case "":
@@ -37,7 +37,13 @@ module.exports = async function (req, res) {
         break
     }
   } catch (error) {
-    console.log(error)
-    res.status(500).send(error)
+    console.error(error)
+    if (error.message == "URL not found") {
+      res.status(400).json({ error: "You must provide existing url", code: 400 })
+    } else {
+
+      res.status(500).send(error)
+    }
+
   }
 }
