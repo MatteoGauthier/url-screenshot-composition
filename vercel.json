@@ -1,4 +1,16 @@
 {
   "version": 2,
-  "public": true
+  "public": true,
+
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "access-control-allow-origin",
+          "value": "*"
+        }
+      ]
+    }
+  ]
 }
