@@ -376,10 +376,10 @@ chownr@^1.1.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
   integrity sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==
 
-chrome-aws-lambda@^5.2.0:
-  version "5.2.1"
-  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-5.2.1.tgz#98ad35aa471df4d547b29c56668c485b937d1a17"
-  integrity sha512-str1ip6pTu9TvCcQyQ/zdYLfQk+ugVVlLf7Gus6peR4PA6Mn3hZBt/eHwgIp/FJ+nY/BIY1jiCYcxpuDjHZWuw==
+chrome-aws-lambda@^5.2.1:
+  version "5.5.0"
+  resolved "https://registry.yarnpkg.com/chrome-aws-lambda/-/chrome-aws-lambda-5.5.0.tgz#5b011d1596020b6ab4b92b010e427da1be6fc628"
+  integrity sha512-nYSDzTsVEVsvIFaUUAUN53ulXBLKSRXFS+eVYZOLZD5SA1If59rqBAiy4raMgorQwXWqjSsjK1SF4As+qzPLqA==
   dependencies:
     lambdafs "^2.0.0"
 
@@ -598,9 +598,9 @@ minimatch@^3.0.4:
     brace-expansion "^1.1.7"
 
 minimist@^1.2.5:
-  version "1.2.5"
-  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
-  integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
+  integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
 
 mkdirp-classic@^0.5.2:
   version "0.5.3"
